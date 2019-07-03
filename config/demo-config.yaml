@@ -4,38 +4,38 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: go_ms_1
+  name: go-ms-1
   labels:
-    app: go_ms_1
-    service: go_ms_1
+    app: go-ms-1
+    service: go-ms-1
 spec:
   ports:
   - port: 8080
     name: http
   selector:
-    app: go_ms_1
+    app: go-ms-1
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go_ms_1_v1
+  name: go-ms-1_v1
   labels:
-    app: go_ms_1
+    app: go-ms-1
     version: v1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: go_ms_1
+      app: go-ms-1
       version: v1
   template:
     metadata:
       labels:
-        app: go_ms_1
+        app: go-ms-1
         version: v1
     spec:
       containers:
-      - name: go_ms_1
+      - name: go-ms-1
         image: gcr.io/industrial-balm-193822/demo_go_ms_1:v1
         imagePullPolicy: IfNotPresent
         ports:
