@@ -48,7 +48,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: frontend
+    app: go-ms-1
   ports:
   - name: http
     port: 80
