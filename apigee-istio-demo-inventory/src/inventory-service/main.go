@@ -4,20 +4,21 @@ package main
 import (
 	"fmt"
 	"log"
+    "strconv"
 	"net/http"
 	"os"
 )
 
 func main() {
 	// use PORT environment variable, or default to 8080
-	port := "8080"
+	port := "5000"
 	if fromEnv := os.Getenv("PORT"); fromEnv != "" {
 		port = fromEnv
 	}
 
 	// register hello function to handle all requests
 	server := http.NewServeMux()
-	server.HandleFunc("/", hello)
+	server.HandleFunc("/inventory", hello)
 
 	// start the web server on port and accept requests
 	log.Printf("Server listening on port %s", port)
@@ -29,9 +30,11 @@ func main() {
 func hello(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Serving request: %s", r.URL.Path)
 	host, _ := os.Hostname()
-	fmt.Fprintf(w, "Status, OK\n")
-    fmt.Fprintf(w, "Response, SUCCESS\n")
-	fmt.Fprintf(w, "Version: 1.0.0\n")
-	fmt.Fprintf(w, "Hostname: %s\n", host)
+    w.Header().Set("Content-Type", "application/json")
+    fmt.Fprintf(w, "{\"list\":[{\"Status\": \"OK\"},")
+    fmt.Fprintf(w, "{\"Product One\":\"" +strconv.Itoa(rand.Intn(100))+ "\"},")
+    fmt.Fprintf(w, "{\"Product Two\":\"" +strconv.Itoa(rand.Intn(100))+ "\"},")
+    fmt.Fprintf(w, "{\"Product Three\":\"" +strconv.Itoa(rand.Intn(100))+ "\"},")
+    fmt.Fprintf(w, "{\"Product Four\":\"" +strconv.Itoa(rand.Intn(100))+ "\"}]}")
 }
 // [END all]

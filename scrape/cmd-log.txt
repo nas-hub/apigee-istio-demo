@@ -1,5 +1,0 @@
-export PROJECT_ID=industrial-balm-193822
-export ZONE=us-central1-a
-export CLUSTER_NAME=hipster-apim-demo
-export HIPSTER_VERSION=1.1.0
-
