@@ -7,6 +7,7 @@ import (
     "strconv"
 	"net/http"
 	"os"
+    "math/rand"
 )
 
 func main() {
@@ -32,6 +33,7 @@ func orders(w http.ResponseWriter, r *http.Request) {
 	host, _ := os.Hostname()
     w.Header().Set("Content-Type", "application/json")
     fmt.Fprintf(w, "{\"Status\":\"Processing...\",")
+    fmt.Fprintf(w, "\"host\":\""+host+"\",")
     fmt.Fprintf(w, "\"Expected Delivery\":\"" +strconv.Itoa(rand.Intn(25))+ " Minutes\"}")
 	
 }

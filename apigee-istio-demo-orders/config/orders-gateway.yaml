@@ -31,3 +31,20 @@ spec:
         host: orders
         port:
           number: 5000
+    corsPolicy:
+      allowOrigin:
+        - https://apigeedemo.net
+        - https://acme-demo.net
+        - https://cloudidentitydemo.com
+        - https://naseerm-a7e01.firebaseapp.com
+        - http://localhost:4200
+      allowMethods:
+        - POST
+        - GET
+        - OPTIONS
+      allowHeaders:
+        - Content-Type
+        - Authorization
+        - Accept
+      allowCredentials: true
+      maxAge: 24h
