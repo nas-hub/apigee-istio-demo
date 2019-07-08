@@ -7,6 +7,7 @@ import (
     "strconv"
 	"net/http"
 	"os"
+    "math/rand"
 )
 
 func main() {

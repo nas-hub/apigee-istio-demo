@@ -1,0 +1,20 @@
+git clone https://github.com/nas-hub/apigee-istio-demo.git
+
+
+
+
+cd
+cd ./apigee-istio-demo/apigee-istio-demo-inventory/src/inventory-service
+
+
+# Create image for apigee-istio-demo-inventory
+export PROJECT_ID=industrial-balm-193822
+export ZONE=us-central1-a
+export CLUSTER_NAME=apigee-istio-demo-inventory
+
+gcloud config set project ${PROJECT_ID}
+gcloud config set compute/zone ${ZONE}
+
+docker build -t gcr.io/${PROJECT_ID}/inventory:v1 .
+docker images
+
